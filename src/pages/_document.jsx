@@ -1,6 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
- function Document() {
+function Document() {
   return (
     <Html lang="en">
       <Head />
@@ -11,4 +11,4 @@ import { Html, Head, Main, NextScript } from "next/document";
     </Html>
   );
 }
-export default Document
+export default Document;
