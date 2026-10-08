@@ -1,18 +1,25 @@
-import React from "react";
-import Imagecard from "./Imagecard";
-import Videocard from "./Videocard";
+import ImageCard from "./ImageCard"
+import VideoCard from "./VideoCard"
 
-const Dashboard = () => {
-  return (
-    <div>
-      <h2>Cloud Dashboard</h2>
-      <input className="main-search" placeholder="Seach in Drive" value={""} />
-      <div className="uploades-container">
-        <Imagecard />
-        <Videocard />
-      </div>
-    </div>
-  );
-};
-
-export default Dashboard;
+const Dashboard = ({assets, searchTerm, setSearchTerm}) => {
+    return (
+        <main>
+            <h2>Welcome to Drive AI</h2>
+            <input
+                className="main-search"
+                placeholder="Search in Drive"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <div className="uploads-container">
+                {assets?.map(asset => 
+                    asset.resource_type == "image" && 
+                    <ImageCard key={asset.asset_id} asset={asset}/> 
+                    || 
+                    <VideoCard key={asset.asset_id} asset={asset}/>
+                )}
+            </div>
+        </main>
+    )
+}
+export default Dashboard
